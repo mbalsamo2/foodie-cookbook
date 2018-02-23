@@ -17,10 +17,14 @@ class RecipesController < ApplicationController
   end
 
   post '/recipes' do
-    @recipe = Recipe.create(params)
-    @recipe.user_id = session[:user_id]
-
-    redirect to "/recipes/#{@recipe.id}"
+    if params[:recipe_name] == "" || params[:ingredients] == "" || params[:instructions] == ""
+      redirect to "/recipes/new"
+    else
+      @recipe = Recipe.new(params)
+      @recipe.user_id = session[:user_id]
+      @recipe.save
+      redirect to "/recipes/#{@recipe.id}"
+  end
   end
 
 end
