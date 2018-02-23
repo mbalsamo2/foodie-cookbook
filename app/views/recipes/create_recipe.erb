@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Foodie Cookbook</title>
+  </head>
+
+  <body style="background-color: #E0FFFF;">
+
+    <header>
+      <a href="/logout">Log Out</a></p>
+      <h1 style="text-align: center;" id="header"> Foodie Cookbook </h1>
+      <h2 style="text-align: center;" id="header"> Your Personal Online Cookbook </h2>
+    </header>
+
+    <h3>Create a Delicious New Recipe: </h3>
+    <form action="/recipes" method="POST">
+      <label for="recipe_name">Recipe Name: </label><input type="text" name="recipe_name"><br><br>
+      <label for="cook_time">Cook Time: </label><input type="text" name="cook_time"><br><br>
+      <label for="ingredients">Ingredients: </label><input type="text" name="ingredients" size="100"><br><br>
+      <label for="instructions">Instructions: </label><input type="text" name="instructions" size="100"><br><br>
+      <input type="submit" value="Create a Recipe">
+    </form>
+
+  </body>
+</html>
