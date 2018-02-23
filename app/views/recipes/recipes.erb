@@ -13,8 +13,9 @@
       <h2 style="text-align: center;" id="header"> Your Personal Online Cookbook </h2>
     </header>
 
-    <h3>Hello, Chef <%=@user.name%></h3>
+    <h3>Hello, Chef <%=@user.name%>!</h3>
     <p>What would you like to create today? <a class="button" href="/recipes/new">Create a New Recipe</a></p>
+    <p>View your personal recipe <a href="/users/<%=@user.slug%>">cookbook</a>.</p>
 
     <br><br>
 

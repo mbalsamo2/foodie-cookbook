@@ -13,6 +13,8 @@ class RecipesController < ApplicationController
   end
 
   get '/recipes/:id' do
+    @user = User.find_by_id(session[:user_id])
+    verify_user
     erb :"/recipes/show_recipe"
   end
 

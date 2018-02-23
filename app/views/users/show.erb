@@ -13,14 +13,18 @@
       <h2 style="text-align: center;" id="header"> Your Personal Online Cookbook </h2>
     </header>
 
-    <h3>Chef <%=@user.name%>'s Delicious New Recipe: </h3>
 
-    <%@user.recipes.each do |recipe|%>
-      <p>Recipe Name: <%= recipe.recipe_name%></p>
-      <p>Cook Time: <%= recipe.cook_time%></p>
-      <p>Ingredients: <%= recipe.ingredients%></p>
-      <p>Instructions: <%= recipe.instructions%></p>
-    <%end%>
+    <h3>Chef <%=@user.name%>'s Personal Cookbook</h3>
+    <p>What would you like to create today? <a class="button" href="/recipes/new">Create a New Recipe</a></p>
+    <%binding.pry%>
+
+    <br><br>
+
+    <ul>
+      <%@recipes.each do |recipe|%>
+        <li><%= recipe.recipe_name %></li>
+      <%end%>
+    </ul>
 
   </body>
 </html>
