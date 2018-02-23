@@ -7,11 +7,13 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
   end
 
+  use Rack::Flash
+  
   helpers do
 
   end
 
-  
+
   get '/' do
     erb :"index"
   end

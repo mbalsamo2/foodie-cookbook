@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Foodie Cookbook</title>
+  </head>
+
+  <body style="background-color: #E0FFFF;">
+
+    <header>
+      <a href="/logout">Log Out</a></p>
+      <h1 style="text-align: center;" id="header"> Foodie Cookbook </h1>
+      <h2 style="text-align: center;" id="header"> Your Personal Online Cookbook </h2>
+    </header>
+
+    <h3>Hello, Chef <%=@user.name%></h3>
+    <p>What would you like to create today? <a class="button" href="/recipes/new">Create a New Recipe</a></p>
+
+    <br><br>
+
+    <p>Recipe Inspiration:</p>
+    <ul>
+      <%@recipes.each do |recipe|%>
+        <li><%= recipe.recipe_name %></li>
+      <%end%>
+    </ul>
+
+  </body>
+</html>
