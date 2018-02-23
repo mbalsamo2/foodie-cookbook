@@ -7,20 +7,24 @@
   <body style="background-color: #E0FFFF;">
 
     <header>
-      <a href="/">Homepage</a>
+      <a href="/recipes">Homepage</a>
       <a href="/logout">Log Out</a>
       <h1 style="text-align: center;" id="header"> Foodie Cookbook </h1>
       <h2 style="text-align: center;" id="header"> Your Personal Online Cookbook </h2>
     </header>
 
-    <h3>Chef <%=@user.name%>'s Delicious New Recipe: </h3>
+    <h3>Chef <%=@current_user.name%>'s Delicious New Recipe: </h3>
 
-    <%@user.recipes.each do |recipe|%>
-      <p>Recipe Name: <%= recipe.recipe_name%></p>
-      <p>Cook Time: <%= recipe.cook_time%></p>
-      <p>Ingredients: <%= recipe.ingredients%></p>
-      <p>Instructions: <%= recipe.instructions%></p>
-    <%end%>
+      <p>Recipe Name: <%= @recipe.recipe_name%></p>
+      <p>Cook Time: <%= @recipe.cook_time%></p>
+      <p>Ingredients: <%= @recipe.ingredients%></p>
+      <p>Instructions: <%= @recipe.instructions%></p>
+
+    <br><br>
+
+    <p>What would you like to do next?</p>
+    <p>I feel like cookin'! <a class="button" href="/recipes/new">Create a New Recipe</a></p>
+    <p>View your personal recipe <a href="/users/<%=@current_user.slug%>">cookbook</a>.</p>
 
   </body>
 </html>

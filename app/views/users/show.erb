@@ -16,15 +16,16 @@
 
     <h3>Chef <%=@user.name%>'s Personal Cookbook</h3>
     <p>What would you like to create today? <a class="button" href="/recipes/new">Create a New Recipe</a></p>
-    <%binding.pry%>
 
     <br><br>
 
-    <ul>
-      <%@recipes.each do |recipe|%>
-        <li><%= recipe.recipe_name %></li>
-      <%end%>
-    </ul>
+    <%@user.recipes.each do |recipe|%>
+      <p>Recipe Name: <%= recipe.recipe_name%></p>
+      <p>Cook Time: <%= recipe.cook_time%></p>
+      <p>Ingredients: <%= recipe.ingredients%></p>
+      <p>Instructions: <%= recipe.instructions%></p>
+      <br><br>
+    <%end%>
 
   </body>
 </html>

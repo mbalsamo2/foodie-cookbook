@@ -13,8 +13,9 @@ class RecipesController < ApplicationController
   end
 
   get '/recipes/:id' do
-    @user = User.find_by_id(session[:user_id])
     verify_user
+    @recipe = Recipe.find_by_id(params[:id])
+
     erb :"/recipes/show_recipe"
   end
 
@@ -26,7 +27,7 @@ class RecipesController < ApplicationController
       @recipe.user_id = session[:user_id]
       @recipe.save
       redirect to "/recipes/#{@recipe.id}"
-  end
+    end
   end
 
 end
