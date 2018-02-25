@@ -17,18 +17,26 @@
       <h2 style="text-align: center;" id="header"> Your Personal Online Cookbook </h2>
     </header>
 
-    <h3>Hello, Chef <%=@user.name%>!</h3>
+    <h2>Hello, Chef <%=@user.name%>!</h2>
     <p>What would you like to create today? <a class="button" href="/recipes/new">Create a New Recipe</a></p>
     <p>View your personal recipe <a href="/users/<%=@user.slug%>">cookbook</a>.</p>
 
     <br><br>
 
-    <p>Recipe Inspiration:</p>
-    <ul>
-      <%@recipes.each do |recipe|%>
-        <li><%= recipe.recipe_name %></li>
+    <h2>Recipe Inspiration:</h2>
+
+      <%@recipes.reverse.each do |recipe|%>
+        <%if recipe.user == nil%>
+          <h3>From an Anonymous Chef</h3>
+        <%else%>
+          <h3>From the Kitchen of Chef <%=recipe.user.name%></h3>
+        <%end%>
+        <p>Recipe Name: <%= recipe.recipe_name%></p>
+        <p>Cook Time: <%= recipe.cook_time%></p>
+        <p>Ingredients: <%= recipe.ingredients%></p>
+        <p>Instructions: <%= recipe.instructions%></p>
+        <p>------------------------------------------</p>
       <%end%>
-    </ul>
 
   </body>
 </html>
