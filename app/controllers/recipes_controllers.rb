@@ -13,6 +13,7 @@ class RecipesController < ApplicationController
     if verify_user
       erb :"/recipes/create_recipe"
     else
+      flash[:message] = "Please log in to your account to do this."
       redirect to "/logout"
     end
   end
@@ -29,6 +30,7 @@ class RecipesController < ApplicationController
       @recipe = Recipe.find_by_id(params[:id])
       erb :"/recipes/edit_recipe"
     else
+      flash[:message] = "Please log in to your account to do this."
       redirect to "/logout"
     end
   end
@@ -38,6 +40,7 @@ class RecipesController < ApplicationController
       @recipe = Recipe.find_by_id(params[:id])
       erb :"/recipes/delete_recipe"
     else
+      flash[:message] = "Please log in to your account to do this."
       redirect to "/logout"
     end
   end
@@ -70,6 +73,7 @@ class RecipesController < ApplicationController
       @recipe.delete
       redirect to "/recipes"
     else
+      flash[:message] = "Please log in to your account to do this."
       redirect to "/logout"
     end
   end
