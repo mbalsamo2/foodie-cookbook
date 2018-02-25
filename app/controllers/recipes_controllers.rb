@@ -10,7 +10,11 @@ class RecipesController < ApplicationController
   end
 
   get '/recipes/new' do
-    erb :"/recipes/create_recipe"
+    if verify_user
+      erb :"/recipes/create_recipe"
+    else
+      redirect to "/logout"
+    end
   end
 
   get '/recipes/:id' do
@@ -50,5 +54,5 @@ class RecipesController < ApplicationController
       redirect to "/recipes/#{@recipe.id}"
     end
   end
-  
+
 end
