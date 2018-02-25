@@ -20,7 +20,7 @@
     <h3>Chef <%=@current_user.name%>'s Delicious New Recipe: </h3>
 
       <p>Recipe Name: <%= @recipe.recipe_name%></p>
-      <p>Cook Time: <%= @recipe.cook_time%></p>
+      <p>Cook Time: <%= @recipe.cook_time%> minute(s)</p>
       <p>Ingredients: <%= @recipe.ingredients%></p>
       <p>Instructions: <%= @recipe.instructions%></p>
       <i><p>This recipe needs some <a href="/recipes/<%=@recipe.id%>/edit">editing.</a> This recipe needs to be <a href="/recipes/<%=@recipe.id%>/delete">deleted.</a></p></i>
