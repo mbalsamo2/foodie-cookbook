@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :"/users/signup"
     else
-      rredirect to "/recipes"
+      redirect to "/recipes"
     end
   end
 
@@ -34,12 +34,12 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    if params[:name] != "" && params[:password] != ""
+    if params[:name] != "" && params[:password] != "" && User.find_by_name(params[:name]).nil?
       @user = User.create(params)
       session[:user_id] = @user.id
       redirect to "/recipes"
     else
-      flash[:message] = "You must have a name and password to create an account."
+      flash[:message] = "You must have a name and password to create an account. If both are filled, this account name already exists."
       redirect to "/signup"
     end
   end
