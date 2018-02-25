@@ -33,6 +33,15 @@ class RecipesController < ApplicationController
     end
   end
 
+  get '/recipes/:id/delete' do
+    if verify_user
+      @recipe = Recipe.find_by_id(params[:id])
+      erb :"/recipes/delete_recipe"
+    else
+      redirect to "/logout"
+    end
+  end
+
   post '/recipes' do
     if params[:recipe_name] == "" || params[:ingredients] == "" || params[:instructions] == ""
       redirect to "/recipes/new"
@@ -52,6 +61,16 @@ class RecipesController < ApplicationController
       verify_user
       @recipe.update(recipe_name: params[:recipe_name], cook_time: params[:cook_time], ingredients: params[:ingredients], instructions: params[:instructions])
       redirect to "/recipes/#{@recipe.id}"
+    end
+  end
+
+  delete '/recipes/:id/delete' do
+    if verify_user
+      @recipe = Recipe.find_by_id(params[:id])
+      @recipe.delete
+      redirect to "/recipes"
+    else
+      redirect to "/logout"
     end
   end
 
