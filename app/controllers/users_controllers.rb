@@ -21,8 +21,10 @@ class UsersController < ApplicationController
   get '/logout' do
     if logged_in?
       logout!
+      flash[:message] = "You successfully logged out!"
       redirect to "/login"
     else
+      flash[:message] = "You must be logged in to log out!"
       redirect to "/"
     end
   end
@@ -37,6 +39,7 @@ class UsersController < ApplicationController
     if params[:name] != "" && params[:password] != "" && User.find_by_name(params[:name]).nil?
       @user = User.create(params)
       session[:user_id] = @user.id
+      flash[:message] = "Successfully created an account!"
       redirect to "/recipes"
     else
       flash[:message] = "You must have a name and password to create an account. If both are filled, this account name already exists."
@@ -51,6 +54,7 @@ class UsersController < ApplicationController
       redirect to "/login"
     elsif @user.authenticate(params[:password])
       session[:user_id] = @user.id
+      flash[:message] = "Successfully logged in!"
       redirect to "/recipes"
     else
       flash[:message] = "You entered the wrong password. Please try again so you can get cookin'!"
