@@ -14,4 +14,7 @@ class User < ActiveRecord::Base
     User.where("LOWER(name) = ?", "#{unslug_name}").first
   end
 
+  def reverse_recipe
+    self.recipes.reverse
+  end
 end
